@@ -27,7 +27,7 @@ A virtual field is created for the property that automatically salts and hashes 
 
 Verification methods are added based on the property name, prefixed with `verify_`, e.g. `verify_password` and `verify_pin`. If a callback is provided, the verification is async.
 
-```
+```javascript
 user.findOne({ email : 'test@example.net' }, function(err, user1) {
 
     user1.verify_password('foobar');         // sync
@@ -44,7 +44,7 @@ A path for the property is created on the schema prefixed with `hash_`, e.g. `ha
 
 When calling `toJSON()` on the object, properties which were generated to store the hash are not returned. `toObject()` is not modified. This is helpful when returning objects across an API. For example:
 
-```
+```javascript
 console.log(user1);
 /*
 { __v: 0,
@@ -55,7 +55,7 @@ console.log(user1);
 */
 ```
 
-```
+```javascript
 console.log(user1.toJSON());
 /*
 { __v: 0, username: 'foo', _id: 55b13b4b74e155f484fc3b72 }
