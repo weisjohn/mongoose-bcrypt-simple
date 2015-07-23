@@ -70,8 +70,15 @@ function test() {
             // positive sync
             user1.verify_password("bar", function(err, result) {
                 assert(result);
-                cb(err, cb);
+                cb(err, user1);
             });
+        }, function(user1, cb) {
+
+            var json = user1.toJSON();
+            assert.equal(json.hash_password, null);
+            assert.equal(json.hash_pin, null);
+            cb();
+
         }
 
     ], function(err) {
@@ -82,7 +89,6 @@ function test() {
             process.exit(0);
         }
     });
-
 
 }
 

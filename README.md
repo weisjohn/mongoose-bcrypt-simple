@@ -40,3 +40,24 @@ user.findOne({ email : 'test@example.net' }, function(err, user1) {
 
 A path for the property is created on the schema prefixed with `hash_`, e.g. `hash_password` and `hash_pin`. You do not work with these properties directly.
 
+### encapsulation
+
+When calling `toJSON()` on the object, properties which were generated to store the hash are not returned. `toObject()` is not modified. This is helpful when returning objects across an API. For example:
+
+```
+console.log(user1);
+/*
+{ __v: 0,
+  username: 'foo',
+  hash_password: '$2a$12$ePVnPYtqIZTyDcNcVVYobeoddBPLieO6XRoVDX0ICBC9I0i369nWO',
+  hash_pin: '$2a$08$sI.7KylAh6eER33gULi7JulTR3PG1hEAcdh/1Cque.RGvww0o.32K',
+  _id: 55b13b4b74e155f484fc3b72 }
+*/
+```
+
+```
+console.log(user1.toJSON());
+/*
+{ __v: 0, username: 'foo', _id: 55b13b4b74e155f484fc3b72 }
+*/
+```

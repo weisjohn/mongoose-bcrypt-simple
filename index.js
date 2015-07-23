@@ -42,4 +42,13 @@ module.exports = function(schema, config) {
         bcrypt.compare(value, this[hash_prop], cb);
     };
 
+    // hide these properties when calling toJSON
+    if (!schema.options.toJSON) schema.options.toJSON = {};
+    var fn = schema.options.toJSON.transform;
+    schema.options.toJSON.transform = function (doc, ret, options) {
+      // remove the _id of every document before returning the result
+      delete ret[hash_prop];
+      if (typeof fn === "function") fn(doc, ret, options);
+    }
+
 }
