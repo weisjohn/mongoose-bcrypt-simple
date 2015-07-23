@@ -1,0 +1,27 @@
+{
+  "name": "mongoose-bcrypt-simple",
+  "version": "1.0.0",
+  "description": "encrypt and verify mongoose schemas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weisjohn/mongoose-bcrypt-simple.git"
+  },
+  "keywords": [
+    "mongoose",
+    "bcrypt",
+    "encrypt",
+    "verify",
+    "schema",
+    "plugin"
+  ],
+  "author": "John Weis <weis.john@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weisjohn/mongoose-bcrypt-simple/issues"
+  },
+  "homepage": "https://github.com/weisjohn/mongoose-bcrypt-simple#readme"
+}
