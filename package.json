@@ -23,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/weisjohn/mongoose-bcrypt-simple/issues"
   },
-  "homepage": "https://github.com/weisjohn/mongoose-bcrypt-simple#readme"
+  "homepage": "https://github.com/weisjohn/mongoose-bcrypt-simple#readme",
+  "devDependencies": {
+    "async": "^1.4.0",
+    "mongoose": "^4.0.8"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.3"
+  }
 }
