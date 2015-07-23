@@ -1,6 +1,6 @@
 {
   "name": "mongoose-bcrypt-simple",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "encrypt and verify mongoose schemas",
   "main": "index.js",
   "scripts": {
