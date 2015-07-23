@@ -1,15 +1,22 @@
 var bcrypt = require('bcrypt');
 
-module.exports = function(schema, prop, config) {
+module.exports = function(schema, config) {
+
+    // handle optional api
+    var prop, steps;
+    if (typeof config === "object") {
+        prop = config.prop;
+        steps = config.steps;
+    } else if (typeof config === "string") {
+        prop = config;
+        steps = 12;
+    }
 
     if (!prop) throw new Error('prop must be specified');
     
     // token virtual references
     var key = '_' + prop;
     var hash_prop = 'hash' + key;
-
-    // bcrypt steps
-    var steps = config && config.steps || 10;
 
     // extend the schema
     var extension = {};

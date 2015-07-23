@@ -9,7 +9,7 @@ function models() {
 
     user = new mongoose.Schema({ username: String });
     user.plugin(mbs, 'password');
-    user.plugin(mbs, 'pin');
+    user.plugin(mbs, { prop : 'pin', steps : 8 });
     user = mongoose.model('user', user);
 
 }
