@@ -20,11 +20,11 @@ module.exports = function(schema, config) {
 
     // extend the schema
     var extension = {};
-    extension[hash_prop] = String;
+    extension[hash_prop] = { type: String, csv: false };
     schema.add(extension);
 
     // setup access methods
-    schema.virtual(prop)
+    schema.virtual(prop, { csv : false })
         .set(function(value) {
             this[key] = value;
             // encrypt value
@@ -46,7 +46,7 @@ module.exports = function(schema, config) {
     if (!schema.options.toJSON) schema.options.toJSON = {};
     var fn = schema.options.toJSON.transform;
     schema.options.toJSON.transform = function (doc, ret, options) {
-      // remove the _id of every document before returning the result
+      // remove the hash_prop before returning the result
       delete ret[hash_prop];
       if (typeof fn === "function") fn(doc, ret, options);
     }
