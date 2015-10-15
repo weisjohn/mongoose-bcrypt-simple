@@ -46,9 +46,9 @@ module.exports = function(schema, config) {
     if (!schema.options.toJSON) schema.options.toJSON = {};
     var fn = schema.options.toJSON.transform;
     schema.options.toJSON.transform = function (doc, ret, options) {
-      // remove the hash_prop before returning the result
-      delete ret[hash_prop];
-      if (typeof fn === "function") fn(doc, ret, options);
+        // remove the hash_prop before returning the result
+        delete ret[hash_prop];
+        if (typeof fn === "function") fn(doc, ret, options);
     }
 
 }
